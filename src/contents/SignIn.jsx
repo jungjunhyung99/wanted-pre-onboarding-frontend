@@ -18,12 +18,13 @@ function SignIn() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const response = signinFunc(form.email, form.password);
-        if(response){
-            console.log("로그인 성공!");
-            localStorage.setItem('token', response);
-            navigate("/todo");
-        }
+            signinFunc(form.email, form.password).then((result) => {
+                if(result){
+                    console.log("hi");
+                    localStorage.setItem('token', result.access_token);
+                    navigate("/todo");
+                }
+            })            
     }
 
     useEffect(() => {
@@ -37,7 +38,7 @@ function SignIn() {
             <form onSubmit={onSubmit}>
                 <Input type="text" placeholder="이메일" value={form.email} data-testid="email-input" onChange={(e) => setForm({...form, email: e.target.value})}/>
                 <Input type="text" placeholder="비밀번호" value={form.password} data-testid="email-input" onChange={(e) => setForm({...form, password: e.target.value})}/>
-                {valid ? <button onClick={onClick}>클릭</button> : <button disabled>클릭2</button>}
+                {valid ? <button onClick={onClick} data-testid="signup-button">클릭</button> : <button disabled>클릭2</button>}
             </form>
         </div>
     )

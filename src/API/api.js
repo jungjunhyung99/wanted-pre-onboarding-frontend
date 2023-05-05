@@ -11,8 +11,7 @@ export const signupFunc = async (email, password) => {
         'email': `${email}`,
         'password': `${password}`
       }),
-    });
-    console.log(response);
+    }).then((result) => result.json());
     return (response.status === 201 ? true : false); 
   } catch (error) {
     console.error(error);
@@ -30,9 +29,8 @@ export const signinFunc = async (email, password) => {
         'email': `${email}`,
         'password': `${password}`
       }),
-    });
-    console.log(response);
-    return (response.status === 200 ? response : false); 
+    }).then((result) => result.json());
+    return (response.access_token ? response : false);
   } catch (error) {
     console.error(error);
   }

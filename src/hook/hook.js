@@ -1,5 +1,4 @@
 export const UseValid = (props) => {
-    console.log(props);
     if(!props.email.includes("@")){
         props.setValid(false);
         return;
@@ -11,6 +10,7 @@ export const UseValid = (props) => {
 
 export const CheckToken = () => {
     const token = localStorage.getItem('token');
+    console.log(token);
     if(token) return true;
     else return false;
 }

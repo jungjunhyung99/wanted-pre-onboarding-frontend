@@ -1,10 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { HomeButtonDiv, HomeContainer, HomeDiv, SignInButton, SignUpButton } from "../styled-components/Home-styled";
+import { HomeButtonDiv, HomeDiv, SignInButton, SignUpButton } from "../styled-components/Home-styled";
 
 function Home() {
     const navigate = useNavigate();
     return (
-    <HomeContainer>
         <HomeDiv>
             회원가입 / 로그인
             <HomeButtonDiv>
@@ -12,7 +11,6 @@ function Home() {
                 <SignUpButton onClick={() => navigate("/signup")}>회원가입</SignUpButton>
             </HomeButtonDiv>
         </HomeDiv>
-    </HomeContainer>
     );
 }
 
