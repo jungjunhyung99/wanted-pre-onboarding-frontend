@@ -11,7 +11,8 @@ export const signupFunc = async (email, password) => {
         'email': `${email}`,
         'password': `${password}`
       }),
-    }).then((result) => result.json());
+    })
+    console.log(response);
     return (response.status === 201 ? true : false); 
   } catch (error) {
     console.error(error);
