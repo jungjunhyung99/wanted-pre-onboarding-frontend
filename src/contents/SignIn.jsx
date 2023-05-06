@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Input } from "../styled-components/SignIn-styled";
+import { Button, Form, Input, SignInContainer } from "../styled-components/SignIn-styled";
 import { useNavigate } from "react-router-dom";
 import { signinFunc } from "../API/api";
 import { CheckToken, UseValid } from "../hook/hook";
@@ -34,13 +34,13 @@ function SignIn() {
     },[navigate]);
     
     return(
-        <div style={{display:"flex", flexDirection:"column"}}>
-            <form onSubmit={onSubmit}>
+        <SignInContainer>
+            <Form onSubmit={onSubmit}>
                 <Input type="text" placeholder="이메일" value={form.email} data-testid="email-input" onChange={(e) => setForm({...form, email: e.target.value})}/>
                 <Input type="text" placeholder="비밀번호" value={form.password} data-testid="email-input" onChange={(e) => setForm({...form, password: e.target.value})}/>
-                {valid ? <button onClick={onClick} data-testid="signup-button">클릭</button> : <button disabled>클릭2</button>}
-            </form>
-        </div>
+                {valid ? <Button onClick={onClick} data-testid="signup-button">로그인</Button> : <Button disabled>클릭2</Button>}
+            </Form>
+        </SignInContainer>
     )
 }
 

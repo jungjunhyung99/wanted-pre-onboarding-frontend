@@ -25,7 +25,6 @@ export const HomeDiv = styled.div`
 export const HomeButtonDiv = styled.div`
     display: flex;
     justify-content: space-between;
-    
     padding: 3rem 2rem;
     width: 30rem;
 `;
@@ -35,9 +34,11 @@ export const SignInButton = styled.button`
     height: 6rem;
     font-size: 2rem;
     font-weight: 600;
-    background-color: #666666;
+    background-color: #AEDFD3;
+    border-radius: 1rem;
 `;
 
 export const SignUpButton = styled(SignInButton)`
-    
+    background-color: #8FA0C3;
 `;
+
