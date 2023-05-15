@@ -20,7 +20,6 @@ function SignIn() {
         e.preventDefault();
             signinFunc(form.email, form.password).then((result) => {
                 if(result){
-                    console.log("hi");
                     localStorage.setItem('token', result.access_token);
                     navigate("/todo");
                 }

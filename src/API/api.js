@@ -12,7 +12,6 @@ export const signupFunc = async (email, password) => {
         'password': `${password}`
       }),
     })
-    console.log(response);
     return (response.status === 201 ? true : false); 
   } catch (error) {
     console.error(error);
@@ -36,3 +35,51 @@ export const signinFunc = async (email, password) => {
     console.error(error);
   }
 };
+
+export const createTodo = async (todo,token) => {
+  try {
+    const response = await fetch(`${baseUrl}todos`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Authorization : `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        todo
+      }),
+    }).then((result) => result.json());
+    
+    return (response.status === 201 ? true : false);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getTodo = async (token) => {
+  try {
+    const response = await fetch(`${baseUrl}todos`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Authorization : `Bearer ${token}`,
+      },
+    }).then((result) => result.json());
+    return (response ? response : false);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const deleteTodo = async(id,token) => {
+  try{
+    const response = await fetch(`${baseUrl}todos/${id}`,{
+      method: "DELETE",
+      headers: {
+        Authorization : `Bearer ${token}`
+      }
+    }).then((result) => result.json());
+    return response;
+  } catch (error){
+    console.error(error);
+  }
+}
