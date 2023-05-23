@@ -48,8 +48,8 @@ export const createTodo = async (todo,token) => {
         todo
       }),
     }).then((result) => result.json());
-    
-    return (response.status === 201 ? true : false);
+    console.log("create: ", response);
+    return (response? response : false);
   } catch (error) {
     console.error(error);
   }
@@ -77,9 +77,27 @@ export const deleteTodo = async(id,token) => {
       headers: {
         Authorization : `Bearer ${token}`
       }
-    }).then((result) => result.json());
+    });
+    console.log("delete: ", response);
     return response;
   } catch (error){
     console.error(error);
   }
-}
+};
+
+export const updateTodo = async(id,token,todo,isCompleted) => {
+  console.log(token,todo,isCompleted);
+  try{
+    const response = await fetch(`${baseUrl}todos/${id}`,{
+      method: "PUT",
+      headers: {
+        Authorization : `Bearer ${token}`,
+        "Content-Type": "application/json; charset=utf-8"
+      }, 
+      body: JSON.stringify({ todo, isCompleted }),
+    })
+    console.log("update:", response);
+  } catch (error){
+    console.error(error);
+  }
+};

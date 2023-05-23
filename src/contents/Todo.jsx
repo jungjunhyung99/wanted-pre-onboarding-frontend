@@ -3,6 +3,8 @@ import { Li, TodoContainer, TodoLabel, TodoSpan } from "../styled-components/Tod
 import { Button, Form, Input } from "../styled-components/SignIn-styled";
 import { useState } from "react";
 import { createTodo, getTodo } from "../API/api";
+import TodoItem from "./TodoAdd";
+import TodoList from "./TodoList";
 
 function Todo() {
     const [todoList, setTodoList] = useState([]);
@@ -53,13 +55,8 @@ function Todo() {
 
     return(
         <TodoContainer>
-            <Form>
-                <Input
-                data-testid="new-todo-input" type="text" placeholder="할 일" value={todo} onChange={(e)=>setTodo(e.target.value)}/>
-                <Button onClick={(e)=> clickAdd(e)} data-testid="new-todo-input">추가</Button>
-            </Form>
-
-            {todoList.map((todo,index) => (
+            <TodoList />
+            {/* {todoList.map((todo,index) => (
                 <Li key={index}>
                 <TodoLabel>
                     <input type="checkbox"/>
@@ -87,7 +84,7 @@ function Todo() {
                 </div>
                 }
                 </Li>
-            ))}
+            ))} */}
         </TodoContainer>
     )
 }
