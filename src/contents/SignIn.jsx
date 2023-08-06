@@ -34,6 +34,7 @@ function SignIn() {
     
     return(
         <SignInContainer>
+            로그인
             <Form onSubmit={onSubmit}>
                 <Input type="text" placeholder="이메일" value={form.email} data-testid="email-input" onChange={(e) => setForm({...form, email: e.target.value})}/>
                 <Input type="text" placeholder="비밀번호" value={form.password} data-testid="email-input" onChange={(e) => setForm({...form, password: e.target.value})}/>

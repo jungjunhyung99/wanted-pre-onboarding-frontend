@@ -7,7 +7,7 @@ import TodoList from "./TodoList";
 function TodoItem({setEditIndex, index, setList, todoList, editIndex}) {
     const [editTodo, setEditTodo] = useState(todoList[index].todo);
 
-    const submitEditClick = async (index) => {
+    const submitEditClick = async () => {
         const token = localStorage.getItem('token');
         await updateTodo(todoList[editIndex].id,token,editTodo,todoList[editIndex].isCompleted);
         setList();
