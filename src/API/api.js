@@ -85,16 +85,15 @@ export const deleteTodo = async(id,token) => {
   }
 };
 
-export const updateTodo = async(id,token,todo,isCompleted) => {
-  console.log(token,todo,isCompleted);
+export const updateTodo = async (todo, token) => {
   try{
-    const response = await fetch(`${baseUrl}todos/${id}`,{
+    const response = await fetch(`${baseUrl}todos/${todo.id}`,{
       method: "PUT",
       headers: {
         Authorization : `Bearer ${token}`,
         "Content-Type": "application/json; charset=utf-8"
       }, 
-      body: JSON.stringify({ todo, isCompleted }),
+      body: JSON.stringify({ todo: todo.todo, isCompleted: todo.isCompleted }),
     })
     console.log("update:", response);
   } catch (error){
