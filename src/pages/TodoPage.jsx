@@ -1,4 +1,4 @@
-import Todo from "../contents/Todo";
+import Todo from "../conponents/Todo/Todo";
 
 function TodoPage(){
     return (
