@@ -28,7 +28,6 @@ function SignIn() {
             })            
     };
 
-
     useEffect(() => {
         if(CheckToken()){
             navigate("/todo");
