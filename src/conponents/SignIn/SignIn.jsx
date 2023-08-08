@@ -2,19 +2,21 @@ import { useEffect, useState } from "react";
 import { Button, Form, Input, SignInContainer } from "../../styled-components/SignIn-styled";
 import { useNavigate } from "react-router-dom";
 import { signinFunc } from "../../API/api";
-import { CheckToken, UseValid } from "../../hook/hook";
+import { CheckToken, checkValid } from "../../hook/hook";
 
 function SignIn() {
     const navigate = useNavigate();
-    const [valid,setValid] = useState(true);
+    const [valid,setValid] = useState(false);
     const [form, setForm] = useState({
         email: '',
         password: '',
     });
     
-    const onClick = () => {
-        UseValid({...form, setValid});
-    }
+    const onChange = (e) => {
+        const {name, value} = e.target;
+        setForm({...form, [name]: value});
+        checkValid({...form, [name]: value},setValid);
+    };
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -24,7 +26,8 @@ function SignIn() {
                     navigate("/todo");
                 }
             })            
-    }
+    };
+
 
     useEffect(() => {
         if(CheckToken()){
@@ -36,9 +39,9 @@ function SignIn() {
         <SignInContainer>
             로그인
             <Form onSubmit={onSubmit}>
-                <Input type="text" placeholder="이메일" value={form.email} data-testid="email-input" onChange={(e) => setForm({...form, email: e.target.value})}/>
-                <Input type="text" placeholder="비밀번호" value={form.password} data-testid="email-input" onChange={(e) => setForm({...form, password: e.target.value})}/>
-                {valid ? <Button onClick={onClick} data-testid="signup-button">로그인</Button> : <Button disabled>클릭2</Button>}
+                <Input type="text" name="email" placeholder="이메일" value={form.email} data-testid="email-input" onChange={onChange}/>
+                <Input type="text" name="password" placeholder="비밀번호" value={form.password} data-testid="email-input" onChange={onChange}/>
+                {valid ? <Button data-testid="signup-button">로그인</Button> : <Button disabled>로그인</Button>}
             </Form>
         </SignInContainer>
     )
