@@ -14,7 +14,7 @@ export const signupFunc = async (email, password) => {
     })
     return (response.status === 201 ? true : false); 
   } catch (error) {
-    console.error(error);
+    alert(error);
   }
 };
 
@@ -32,7 +32,7 @@ export const signinFunc = async (email, password) => {
     }).then((result) => result.json());
     return (response.access_token ? response : false);
   } catch (error) {
-    console.error(error);
+    alert(error);
   }
 };
 
@@ -51,7 +51,7 @@ export const createTodo = async (todo,token) => {
     console.log("create: ", response);
     return (response? response : false);
   } catch (error) {
-    console.error(error);
+    alert(error);
   }
 };
 
@@ -66,7 +66,7 @@ export const getTodo = async (token) => {
     }).then((result) => result.json());
     return (response ? response : false);
   } catch (error) {
-    console.error(error);
+    alert(error);
   }
 };
 
@@ -81,7 +81,7 @@ export const deleteTodo = async(id,token) => {
     console.log("delete: ", response);
     return response;
   } catch (error){
-    console.error(error);
+    alert(error);
   }
 };
 
@@ -97,6 +97,6 @@ export const updateTodo = async (todo, token) => {
     })
     console.log("update:", response);
   } catch (error){
-    console.error(error);
+    alert(error);
   }
 };
