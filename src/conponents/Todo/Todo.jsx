@@ -9,7 +9,7 @@ function Todo() {
 
     useEffect(() => {
         if(!CheckToken()){
-            navigate("/");
+            navigate("/signin");
         }
     },[navigate])
     
