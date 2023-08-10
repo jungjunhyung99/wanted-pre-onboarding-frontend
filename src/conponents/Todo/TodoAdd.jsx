@@ -26,7 +26,7 @@ function TodoAdd({setList}) {
             />
             <Button 
             onClick={(e)=> clickAdd(e)} 
-            data-testid="new-todo-input"
+            data-testid="new-todo-add-button"
             >
             추가
             </Button>
